@@ -21,6 +21,7 @@ codes = {
 size = 0
 i = 0
 
+
 def statprinter():
     """
     Prints accumulated logs
@@ -32,7 +33,9 @@ def statprinter():
 
         print('{}: {}'.format(status_code, value))
 
+
 if __name__ == "__main__":
+
     try:
         while True:
             current_line = stdin.readline().strip()
