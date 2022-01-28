@@ -19,33 +19,36 @@ codes = {
 }
 
 size = 0
-
+i = 0
 
 def statprinter():
     """
     Prints accumulated logs
     """
-    print("File size: {}".format(size))
-    for stat in sorted(codes.keys()):
-        if codes[stat]:
-            print("{}: {}".format(stat, codes[stat]))
+    print('File size: {}'.format(int(size)))
+    for status_code, value in codes.items():
+        if value == 0:
+            continue
 
+        print('{}: {}'.format(status_code, value))
 
 if __name__ == "__main__":
-    count = 0
     try:
-        for _input in stdin:
-            try:
-                items = _input.split()
-                size += int(items[-1])
-                if items[-2] in codes:
-                    codes[items[-2]] += 1
-            except:
+        while True:
+            current_line = stdin.readline().strip()
+            tokens = current_line.split(' ')
+
+            if len(tokens) != 9:
                 pass
-            if count == 9:
+
+            current_size, status_code = tokens[-1], tokens[-2]
+            size += float(current_size)
+            codes[status_code] += 1
+            i += 1
+
+            if i == 10:
                 statprinter()
-                count = -1
-                count += 1
+                i = 0
     except KeyboardInterrupt:
         statprinter()
         raise
