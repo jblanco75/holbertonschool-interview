@@ -20,12 +20,12 @@ def validUTF8(data):
             while b & n:
                 n_bytes += 1
                 b = b >> 1
-                if n_bytes == 0:
-                    continue
-                if n_bytes == 1 or n_bytes > 4:
-                    return False
-                else:
-                    if not (n & byte_1 and not (n & byte_2)):
-                        return False
-                    n_bytes -= 1
+            if n_bytes == 0:
+                continue
+            if n_bytes == 1 or n_bytes > 4:
+                return False
+        else:
+            if not (n & byte_1 and not (n & byte_2)):
+                return False
+        n_bytes -= 1
     return n_bytes == 0
