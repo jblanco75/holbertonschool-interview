@@ -12,5 +12,5 @@ Given an array of integers, we want to be able to slide & merge it to the left o
   * SLIDE_RIGHT
   * If it is something else, the function must fail
   * Both macros SLIDE_LEFT and SLIDE_RIGHT must be defined in slide_line.h
-Your function must return 1 upon success, or 0 upon failure
-You are not allowed to allocate memory dynamically (malloc, calloc, …)
+* Your function must return 1 upon success, or 0 upon failure
+* You are not allowed to allocate memory dynamically (malloc, calloc, …)
