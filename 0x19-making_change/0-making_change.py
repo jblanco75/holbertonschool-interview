@@ -8,15 +8,28 @@ def makeChange(coins, total):
     """Making change method"""
     if total <= 0:
         return 0
-    placeholder = total + 1
-    memo = {0: 0}
-    for i in range(1, total + 1):
-        memo[i] = placeholder
-        for coin in coins:
-            current = i - coin
-            if current < 0:
-                continue
-            memo[i] = min(memo[current] + 1, memo[i])
-    if memo[total] == total + 1:
+
+    if type(coins) is not list:
+        return
+
+    if coins == []:
         return -1
-    return memo[total]
+
+    coins.sort(reverse=True)
+
+    len_coins = len(coins)
+    i = 0
+    counter = 1
+    sub_total = coins[i]
+
+    while True:
+        if sub_total > total:
+            counter -= 1
+            sub_total -= coins[i]
+            i += 1
+            if i >= len_coins:
+                return makeChange(coins[1:], total)
+        if sub_total == total:
+            return counter
+        sub_total += coins[i]
+        counter += 1
