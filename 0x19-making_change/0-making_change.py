@@ -10,8 +10,6 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    if type(coins) is not list:
-        return
     if coins == []:
         return -1
     coins.sort(reverse=True)
