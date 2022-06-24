@@ -5,7 +5,9 @@ making_change
 
 
 def makeChange(coins, total):
-    """Making change method"""
+    """
+    Making change method
+    """
     if total <= 0:
         return 0
     if type(coins) is not list:
